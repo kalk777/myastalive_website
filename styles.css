@@ -484,6 +484,21 @@ main { position: relative; z-index: 1; }
 .feature h3 { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
 .feature p { color: var(--text-60); font-size: 14px; }
 
+/* ===================== NON SOLO LEGHE FANTASY ===================== */
+.section__lead {
+  color: var(--text-60);
+  font-size: 16px;
+  max-width: 60ch;
+  margin-bottom: 32px;
+}
+#oltre-fantasy .section__title { margin-bottom: 14px; }
+.use-cases {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.feature__icon--emoji { font-size: 24px; line-height: 1; }
+
 /* ===================== FINAL CTA ===================== */
 .final-cta { padding: 40px 22px 80px; }
 .final-cta__inner {
@@ -524,6 +539,7 @@ main { position: relative; z-index: 1; }
 /* ===================== RESPONSIVE ===================== */
 @media (min-width: 720px) {
   .steps { grid-template-columns: repeat(3, 1fr); }
+  .use-cases { grid-template-columns: repeat(3, 1fr); }
   .features { grid-template-columns: repeat(2, 1fr); }
 }
 @media (min-width: 980px) {
