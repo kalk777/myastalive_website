@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account eliminato — MyAsta Live</title>
+  <meta name="robots" content="noindex" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0D0D0F;
+      --surface: #111114;
+      --surface-2: #16161A;
+      --violet: #7C3AED;
+      --violet-light: #A78BFA;
+      --green: #4ade80;
+      --border: rgba(255, 255, 255, 0.07);
+      --text: #ffffff;
+      --text-dim: rgba(255, 255, 255, 0.45);
+      --text-faint: rgba(255, 255, 255, 0.25);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Glow ambientali */
+    .glow {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow--top {
+      top: -140px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.24), transparent 70%);
+    }
+    .glow--bottom {
+      bottom: -120px;
+      right: -80px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(109, 40, 217, 0.18), transparent 70%);
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 48px 36px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      animation: cardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Badge logo */
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background-color: rgba(124, 58, 237, 0.16);
+      border: 1px solid rgba(124, 58, 237, 0.32);
+      border-radius: 12px;
+      padding: 8px 14px;
+      margin-bottom: 36px;
+    }
+    .brand__icon { font-size: 15px; line-height: 1; }
+    .brand__name {
+      color: var(--violet-light);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+    }
+
+    /* Check animato */
+    .check-wrap {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(167, 139, 250, 0.08));
+      border: 1px solid rgba(124, 58, 237, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .check-svg {
+      width: 42px;
+      height: 42px;
+    }
+    .check-svg .check-circle {
+      fill: none;
+      stroke: var(--violet-light);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 126;
+      stroke-dashoffset: 126;
+      animation: drawCheck 0.6s cubic-bezier(0.65, 0, 0.45, 1) 0.3s forwards;
+    }
+    .check-svg .check-mark {
+      fill: none;
+      stroke: var(--green);
+      stroke-width: 3.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 24;
+      stroke-dashoffset: 24;
+      animation: drawCheck 0.35s cubic-bezier(0.65, 0, 0.45, 1) 0.9s forwards;
+    }
+
+    @keyframes drawCheck { to { stroke-dashoffset: 0; } }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      color: var(--text-dim);
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    /* Istruzione */
+    .steps {
+      background-color: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-dim);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .step__icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background-color: rgba(124, 58, 237, 0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+    .step strong { color: var(--text); font-weight: 600; }
+
+    /* CTA */
+    .cta {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--violet), var(--violet-light));
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      padding: 16px 40px;
+      border-radius: 50px;
+      box-shadow: 0 8px 28px rgba(124, 58, 237, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(124, 58, 237, 0.5);
+    }
+    .cta:focus-visible {
+      outline: 2px solid var(--violet-light);
+      outline-offset: 3px;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 36px;
+      color: var(--text-faint);
+      font-size: 11px;
+      line-height: 1.8;
+    }
+    .footer a { color: var(--text-dim); text-decoration: none; }
+    .footer a:hover { color: var(--violet-light); }
+
+    @media (max-width: 480px) {
+      .card { padding: 40px 24px; }
+      h1 { font-size: 23px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card, .check-svg * { animation: none; }
+      .check-svg * { stroke-dashoffset: 0; }
+      .cta { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow glow--top"></div>
+  <div class="glow glow--bottom"></div>
+
+  <main class="card">
+    <div class="brand">
+      <span class="brand__icon">⚡</span>
+      <span class="brand__name">MY ASTA LIVE</span>
+    </div>
+
+    <div class="check-wrap" role="img" aria-label="Account eliminato">
+      <svg class="check-svg" viewBox="0 0 48 48" aria-hidden="true">
+        <!-- Cerchio -->
+        <circle class="check-circle" cx="24" cy="24" r="20" />
+        <!-- Check al centro -->
+        <path class="check-mark" d="M16 24 l6 6 l10 -12" />
+      </svg>
+    </div>
+
+    <h1>Account eliminato</h1>
+    <p class="subtitle">
+      Il tuo account e tutti i tuoi dati sono stati eliminati definitivamente.<br>
+      Ci dispiace vederti andare!
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step__icon">📱</span>
+        <span>Se cambi idea, potrai sempre creare un nuovo account dall'app <strong>MyAsta Live</strong>.</span>
+      </div>
+    </div>
+
+    <a class="cta" href="https://myastalive.com">Vai al sito</a>
+
+    <div class="footer">
+      MyAsta Live — Sfida chi vuoi nella tua asta live<br>
+      🌐 <a href="https://myastalive.com">myastalive.com</a>
+      &nbsp;·&nbsp;
+      ✉️ <a href="mailto:info@myastalive.com">info@myastalive.com</a>
+    </div>
+  </main>
+</body>
+</html>
